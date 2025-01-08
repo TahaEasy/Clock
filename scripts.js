@@ -8,7 +8,7 @@ const digitalClock = document.querySelector(".digital-clock");
 
 const date = new Date();
 
-const hour = date.getHours() >= 12 ? date.getHours() - 12 : date.getHours() + 1;
+const hour = date.getHours() >= 12 ? date.getHours() - 12 : date.getHours();
 
 const secondsPassed = date.getMinutes() * 60 + date.getSeconds();
 
