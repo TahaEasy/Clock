@@ -10,11 +10,11 @@ const date = new Date();
 
 const hour = date.getHours() >= 12 ? date.getHours() - 12 : date.getHours();
 
-const secondsPassed = date.getMinutes() * 60 + date.getSeconds();
+const secondsPassed = date.getMinutes() * 60 + (date.getSeconds() + 1);
 
-let secDeg = date.getSeconds() * 6;
+let secDeg = (date.getSeconds() + 1) * 6;
 let minDeg = (secondsPassed * 6) / 60;
-let hourDeg = ((hour * 3600 + secondsPassed) * 6) / 12 / 60;
+let hourDeg = ((hour * 3600 + secondsPassed) * 30) / 60 / 60;
 
 const setHands = () => {
   secondsEl.style.transform = `translateY(-50%) rotate(${secDeg}deg)`;
@@ -47,7 +47,11 @@ setTimeout(() => {
 
     secDeg += 6;
     minDeg += 6 / 60;
-    hourDeg += 6 / 12 / 60;
+    hourDeg += 30 / 60 / 60;
+
+    if (hourDeg % 30 === 0) {
+      console.log("1 hour past");
+    }
 
     setHands();
     setDigitalClockNums();
